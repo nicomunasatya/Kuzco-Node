@@ -36,8 +36,10 @@ sudo systemctl enable docker
 3. Register an Account at ViKey.ai
 Open: 🔗 https://vikey.ai
 Then register an account, login, and go to the menu:
+![image](https://raw.githubusercontent.com/nicomunasatya/Kuzco-Node/refs/heads/main/1.webp)
 
 👉 My API Key → click Create New API Key
+![image]([URL_GAMBAR](https://raw.githubusercontent.com/nicomunasatya/Kuzco-Node/refs/heads/main/2.webp))
 
 4. Top Up Balance on ViKey.ai 💸
 Before continuing, you must top up your balance on your ViKey account first.
@@ -45,6 +47,7 @@ Before continuing, you must top up your balance on your ViKey account first.
 Why? Because the inference you run later uses ViKey's GPU-based inference service, but you don't need to rent a GPU per hour, just pay according to usage (pay-as-you-go). Much more economical and practical!
 
 Enter the Billing / Top Up menu on the ViKey dashboard, then fill in the balance sufficiently.
+![image](https://raw.githubusercontent.com/nicomunasatya/Kuzco-Node/refs/heads/main/3.webp)
 
 5. Clone and Run ViKey Inference
 ```
@@ -90,10 +93,41 @@ After logging in, you will get:
 KUZCO_WORKER (XXXf8KuZaSJYMSmp-5aP8 -> if the example is in the picture)
 
 KUZCO_CODE (05e1b639-30ef-4437-a2b3-94a5b3f56dc5 -> if the example is in the picture)
+![image](https://raw.githubusercontent.com/nicomunasatya/Kuzco-Node/refs/heads/main/4.webp)
 
+9. Edit Konfigurasi nginx dan Docker
+```
+nano nginx.conf
+```
+Replace this part:
+```
+proxy_pass http://YOUR_VPS_IP:14444;
+```
+🔧 File docker-compose.yml
+```
+nano docker-compose.yml
+```
+Fill in the code from your Kuzco account:
+```
+environment:
+  - KUZCO_WORKER=contents_of_kuzco_dashboard
+  - KUZCO_CODE=contents_of_kuzco_dashboard
+```
 
+10. Run Kuzco Node 🚀
+Now let's run the node:
+```
+docker-compose up -d --build
+```
+![image](https://raw.githubusercontent.com/nicomunasatya/Kuzco-Node/refs/heads/main/5.webp)
 
-
-
-
-
+🔍 Log Check Tips
+Check Kuzco Worker log:
+```
+docker-compose logs -f --tail 100
+```
+Check the ViKey Inference log:
+```
+cd ~/vikey-inference
+tail -f vikey.log
+```
