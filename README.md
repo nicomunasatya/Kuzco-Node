@@ -167,7 +167,7 @@ tail -f vikey.log
 6. Connect your rentu GPU to your device/VPS
 
    ![Connect GPU](https://raw.githubusercontent.com/nicomunasatya/Gaia-Node/main/connect.png)
-7. When it's connected, congratulations, you can use it to work on the Gaia node
+7. When it's connected, congratulations, you can use it to work on the Kuzco Node
 
    ![ssh login vps](https://raw.githubusercontent.com/nicomunasatya/Gaia-Node/main/ssh%20login%20vps.PNG)
    
